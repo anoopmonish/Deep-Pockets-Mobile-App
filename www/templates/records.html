@@ -1,0 +1,39 @@
+<ion-view view-title="Records">
+  <ion-content>
+	<div class="card">
+		<div class="item item-divider">
+			<h4 class="title">{{accountName}}</h4>
+			<p class="category">{{accountNumber}}</p>
+		</div>
+		<div class="item item-text-wrap">
+			<table>
+				<thead>
+					<th><b>Transaction</b></th>
+					<th><b>Date</b></th>
+					<th><b>Amount</b></th>
+					<th><b>Type</b></th>
+					<th><b>From</b></th>
+					<th><b>To</b></th>
+					<th><b>Balance</b></th>
+					<th><b>Comments</b></th>
+				</thead>
+				<tbody>
+					<tr ng-repeat="record in transactions|orderBy:'-createdAt'">
+						<td>{{record.name}}</td>
+						<td>{{record.createdAt|date : "MMM dd y HH:mm"}}</td>
+						<td><b>{{record.amount|currency:symbol}}</b></td>
+						<td>{{record.type}} {{record.category}}</td>
+						<td>{{record.fro}}</td>
+						<td>{{record.to}}</td>
+						<td>{{record.balance|currency:symbol}}</td>
+						<td>{{record.comments}}</td>
+					</tr>
+				</tbody>
+			</table>
+			<div ng-if="loading">
+				<center><img src="img/spinner.gif"></center>
+			</div>
+		</div>
+	</div>
+  </ion-content>
+</ion-view>

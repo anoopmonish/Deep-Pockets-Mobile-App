@@ -1,0 +1,16 @@
+<ion-view view-title="">
+  <ion-content class="padding">
+		<center>
+			<img src="img/DeepPocket-logo.png" width="300">
+		</center>
+      <div class="list list-inset">
+          <label class="item item-input">
+              <input type="text" placeholder="Username" ng-model="loginData.username">
+          </label>
+          <label class="item item-input">
+              <input type="password" placeholder="Password" ng-model="loginData.password">
+          </label>
+      </div>
+      <button ng-disabled="disableLogin" class="button button-block button-calm" ng-click="doLogin()">Login</button>
+  </ion-content>
+</ion-view>

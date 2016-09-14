@@ -1,0 +1,51 @@
+<ion-view view-title="Dashboard">
+  <ion-content>
+		<div class="card">
+			<div class="item item-divider">
+				Pocket <small>Assets</small>
+			</div>
+			<div class="item item-text-wrap">
+				<div ng-if="loading">
+					<center><img src="img/spinner.gif"></center>
+				</div>
+				<div ng-if="dataFailed" class="assertive">
+					<i class="icon ion-ios-information-outline"></i>&nbsp;
+					<b>Connection failed. Please try later</b>
+				</div>
+				<canvas id="myChart" width="250" height="250"></canvas>
+			</div>
+			<div class="item item-divider">
+				<i class="icon ion-ios-clock-outline"></i><small> Dated today</small>
+			</div>
+		</div>
+
+		<div class="card">
+			<div class="item item-divider">
+				Balance <small>Statistics</small>
+			</div>
+			<div class="item item-text-wrap">
+				<div ng-if="dataFailed" class="assertive">
+					<i class="icon ion-ios-information-outline"></i>&nbsp;
+					<b>Connection failed. Please try later</b>
+				</div>
+				<div class="list">
+					<div class="item">
+						Total Balance<span class="badge assertive"><b>{{totalassets|currency:symbol}}</b></span>
+					</div>
+					<div class="item">
+						Bank Savings <span class="badge balanced"><b>{{bankbalance|currency:symbol}}</b></span>
+					</div>
+					<div class="item">
+						Virtual Cash <span class="badge balanced"><b>{{creditbalance|currency:symbol}}</b></span>
+					</div>
+					<div class="item">
+						Cash on Hand <span class="badge balanced"><b>{{cashonhand|currency:symbol}}</b></span>
+					</div>
+				</div>
+			</div>
+			<div class="item item-divider">
+				<i class="icon ion-ios-clock-outline"></i><small> Dated today</small>
+			</div>
+		</div>
+  </ion-content>
+</ion-view>

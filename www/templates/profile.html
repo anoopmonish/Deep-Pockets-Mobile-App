@@ -1,0 +1,87 @@
+<ion-view view-title="Profile">
+  <ion-content>
+	<div ng-show="!edit">
+		<div class="card">
+			<div class="item">
+				<button ng-click="editProfile()" type="button" class="badge">
+					<i class="icon ion-ios-compose-outline positive"></i>
+				</button></h4>
+				<br><br><br>
+				<div class="text-center">
+					<img src="{{masterProfile.avatar}}" alt="..."/>
+						<div ng-if="loading">
+							<center><img src="img/spinner.gif"></center>
+						</div>
+						<div ng-if="dataFailed" class="assertive">
+							<i class="icon ion-ios-information-outline"></i>&nbsp;
+							<b>Connection failed. Please try later</b>
+						</div><br>
+						<b>{{masterProfile.firstname}} {{masterProfile.lastname}}</b><br>
+							<small>{{masterProfile.username}}</small>
+						
+				</div>
+				<p class="description text-center"><br>&nbsp;</p>
+				<hr>
+				<div class="text-center">
+					<i class="icon ion-social-facebook"></i>&nbsp;&nbsp;&nbsp;
+					<i class="icon ion-social-twitter"></i>&nbsp;&nbsp;&nbsp;
+					<i class="icon ion-social-googleplus-outline"></i>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div ng-show="edit">
+		<div class="card">
+			<div class="item item-divider">
+				<h4>Edit Profile</h4>
+			</div>
+			<div class="item item-text-wrap">
+				<!-- <form name="profileForm" ng-submit="updateProfile()"> -->
+					<div class="row">
+						<div class="col-12">
+							<label>Avatar</label><br><br>
+							<a ng-repeat="avatar in avatars" href="">
+								<img ng-click="setAvatar(avatar)" class="img-thumbnail" ng-src="{{avatar}}" width="100" height="100"/>
+							</a>
+						</div>
+					</div>
+					<label class="item item-input">
+						<span class="input-label">First Name</span>
+						<input ng-required="true" type="text" placeholder="First Name" ng-model="slaveProfile.firstname"/>
+					</label>
+					<label class="item item-input">
+						<span class="input-label">Last Name</span>
+						<input ng-required="true" type="text" placeholder="Last Name" ng-model="slaveProfile.lastname"/>
+					</label>
+					<label class="item item-input">
+						<span class="input-label">Address</span>
+						<input type="text" placeholder="Home Address" ng-model="slaveProfile.address"/>
+					</label>
+					<label class="item item-input">
+						<span class="input-label">City</span>
+						<input type="text" placeholder="City" ng-model="slaveProfile.city"/>
+					</label>
+					<label class="item item-input">
+						<span class="input-label">Country</span>
+						<input type="text" placeholder="Country" ng-model="slaveProfile.country"/>
+					</label>
+					<label class="item item-input">
+						<span class="input-label">Postal Code</span>
+						<input type="number" min="0" placeholder="ZIP Code" ng-model="slaveProfile.pincode"/>
+					</label>
+					<label class="item">
+					<center>
+						<button ng-click="updateProfile()" ng-disabled="disablebutton" class="button button-block button-positive">Update Profile</button>&nbsp;
+						<button ng-click="" class="button button-block button-stable">Cancel</button>
+					</center>
+					</label>
+					<div ng-if="loading">
+						<center><img src="img/spinner.gif"></center>
+					</div>
+				<!-- </form> -->
+			</div>
+		</div>
+	</div>
+  </ion-content>
+</ion-view>

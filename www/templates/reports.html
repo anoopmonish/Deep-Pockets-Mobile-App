@@ -1,0 +1,51 @@
+<ion-view view-title="Reports">
+  <ion-content>
+	<div class="card">
+		<label class="item item-input item-select">
+			<span class="input-label">Choose Account</span>
+			<select ng-required="true" ng-change="drawGraph(reportSelection)" ng-model="reportSelection"
+			ng-options="account as account.name for account in Accounts">
+			</select>
+		</label>
+	</div>
+
+	<div class="card">
+		<div class="item item-divider">
+			Recent <small>Transactions</small>
+		</div>
+		<div class="item item-text-wrap">
+			<div ng-if="loading">
+				<center><img src="img/spinner.gif"></center>
+			</div>
+			<div ng-if="dataFailed" class="assertive">
+				<i class="icon ion-ios-information-outline"></i>&nbsp;
+				<b>Connection failed. Please try later</b>
+			</div>
+			<canvas id="myLine" width="250" height="250"></canvas>
+			{{make}}
+		</div>
+		<div class="item item-divider">
+			<i class="icon ion-ios-clock-outline"></i><small> Dated today</small>
+		</div>
+	</div>
+	
+	<div class="card">
+		<div class="item item-divider">
+			Pocket <small>Assets</small>
+		</div>
+		<div class="item item-text-wrap">
+			<div ng-if="loading">
+				<center><img src="img/spinner.gif"></center>
+			</div>
+			<div ng-if="dataFailed" class="assertive">
+				<i class="icon ion-ios-information-outline"></i>&nbsp;
+				<b>Connection failed. Please try later</b>
+			</div>
+			<canvas id="myPie" width="250" height="250"></canvas>
+		</div>
+		<div class="item item-divider">
+			<i class="icon ion-ios-clock-outline"></i><small> Dated today</small>
+		</div>
+	</div>
+  </ion-content>
+</ion-view>

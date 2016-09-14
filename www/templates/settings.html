@@ -1,0 +1,30 @@
+<ion-view view-title="Settings">
+  <ion-content>
+		<div class="card">
+			<div class="item item-divider">
+				<h4 class="title">Visuals</h4>
+				<p class="category"></p>
+			</div>
+			<div class="item item-text-wrap">
+					<button ng-click="setColour('blue')" class="button button-positive">&nbsp;</button>&nbsp;
+					<button ng-click="setColour('azure')" class="button button-calm">&nbsp;</button>&nbsp;
+					<button ng-click="setColour('green')" class="button button-balanced">&nbsp;</button>&nbsp;
+					<button ng-click="setColour('orange')" class="button button-energized">&nbsp;</button>&nbsp;
+					<button ng-click="setColour('red')" class="button button-assertive">&nbsp;</button>&nbsp;
+					<button ng-click="setColour('none')" class="button" style="border-color:#888888;background:#888888">&nbsp;</button>&nbsp;
+					<button ng-click="setColour('purple')" class="button button-royal">&nbsp;</button>&nbsp;
+				<br><br>
+				<a ng-repeat="pic in pictures" href="">
+					<img ng-click="setPicture(pic)" class="img-thumbnail" ng-src="{{pic}}" width="100"/>
+				</a>
+				<br><br><br>
+				<center>
+					<button ng-disabled="disablebutton" ng-click="updateSettings()" class="button button-calm">Save</button>
+				</center>
+				<div ng-if="loading">
+					<center><img src="img/spinner.gif"></center>
+				</div>
+			</div>
+		</div>
+  </ion-content>
+</ion-view>

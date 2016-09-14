@@ -1,0 +1,72 @@
+<ion-view view-title="Transaction">
+  <ion-content>
+		<div class="card">
+			<div class="item item-divider">
+				<h4 class="title">Perform New Transaction</h4>
+			</div>
+			<div class="item">
+				<div ng-if="dataFailed" class="assertive">
+					<i class="icon ion-ios-information-outline"></i>&nbsp;
+					<b>Connection failed. Please try later</b>
+				</div>
+				<form name="transactionForm" ng-submit="submitTransaction()">
+					<label class="item item-input">
+						<span class="input-label">Transaction</span>
+						<input type="text" ng-required="true" placeholder="Name" ng-model="transaction.name"/>
+					</label>
+					<label class="item item-input item-select">
+						<span class="input-label">Type</span>
+						<select ng-change="updateByType()" placeholder="Type" ng-required="true" ng-model="transaction.type">
+							<option value="Deposit">Deposit</option>
+							<option value="Expenditure">Expenditure</option>
+							<option value="Internal Transfer">Internal Transfer</option>
+						</select>
+					</label>
+					<label ng-if="transaction.type == 'Expenditure'" class="item item-input item-select">
+						<span class="input-label">Category</span>
+						<select ng-required="true" placeholder="Category" ng-model="transaction.category">
+							<option value="Education">Education</option>>
+							<option value="Entertainment">Entertainment</option>
+							<option value="Groceries">Groceries</option>
+							<option value="Household">Household</option>
+							<option value="Instalment">Instalment</option>
+							<option value="Lifestyle">Lifestyle</option>
+							<option value="Vehicle">Vehicle</option>
+							<option value="Other">Other</option>
+						</select>
+					</label>
+					<label class="item item-input" ng-if="transaction.type=='Expenditure'&&transaction.category=='Other'">
+						<span class="input-label">Others</span>
+						<input type="text" placeholder="Other Specify.." ng-required="true" ng-model="other">
+					</label>
+					<label class="item item-input item-select" ng-if="transaction.type != 'Deposit'">
+						<span class="input-label">From</span>
+						<select ng-change="updateByFro()" ng-required="true" ng-model="transaction.fro"
+						ng-options="account as account.name for account in froAccounts">
+						</select>
+					</label>
+					<label class="item item-input item-select" ng-if="transaction.type != 'Expenditure'">
+						<span class="input-label">To</span>
+						<select ng-required="true" ng-model="transaction.to"
+						ng-options="account as account.name for account in toAccounts">
+						</select>
+					</label>
+					<label class="item item-input">
+						<span class="input-label">Amount</span>
+						<input type="number" ng-required="true" min="1" step="0.10" placeholder="Amount" ng-model="transaction.amount">
+					</label>
+					<label class="item item-input">
+						<span class="input-label">Comments</span>
+						<textarea rows="2" placeholder="Additional Information" ng-model="transaction.comments"></textarea>
+					</label>
+					<label class="item">
+						<button ng-disabled="transactionForm.$invalid||buttonDisabled" type="submit" class="{{transactionForm.$invalid ? 'button button-block button-disabled button-positive' : 'button button-block button-positive'}}">Submit</button>
+					</label>
+					<div ng-if="loading">
+						<center><img src="img/spinner.gif"></center>
+					</div>
+				</form>
+			</div>
+		</div>
+  </ion-content>
+</ion-view>

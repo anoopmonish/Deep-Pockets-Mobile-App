@@ -1,0 +1,44 @@
+<ion-view view-title="Accounts">
+     <ion-nav-buttons side="secondary">
+      <div class="buttons">
+        <button class="button button-icon icon ion-more"
+          ng-click="openPopover($event)"></button>
+      </div>
+    </ion-nav-buttons>
+   <div class="tabs-striped tabs-color-royal">
+    <ul class="tabs">
+        <li ng-class="{active:isSelected(1)}" class="tab-item">
+            <a ng-click="select(1)">Bank Accounts</a></li>
+        <li ng-class="{active:isSelected(2)}" class="tab-item">
+            <a ng-click="select(2)">Online Wallets</a></li>
+        <li ng-class="{active:isSelected(3)}" class="tab-item">
+            <a  ng-click="select(3)">Cash</a></li>
+    </ul>
+  </div>
+  <ion-content>
+	<center>
+	<div ng-if="loading">
+	<br><br>
+		<img src="img/spinner.gif">
+	</div>
+	<div ng-if="dataFailed" class="assertive">
+	<br><br>
+		<i class="icon ion-ios-information-outline"></i>&nbsp;
+		<b>Connection failed. Please try later</b>
+	</div>
+	</center>
+	<ion-list>
+		<ion-item class="card" ng-repeat="account in accounts|filter:{type:filtText}|orderBy:'name'" href="#/app/records/{{account.id}}">
+			<div ng-click="setAccountNames(account.name,account.number)">
+				<b class="assertive">{{account.name|uppercase}}</b><br><small>{{account.number}}</small><br>
+				{{account.description}}<br>
+				<span class="badge badge-balanced">
+					<b>{{account.balance|currency:symbol}}</b>
+				</span><br>
+				<i class="icon ion-ios-clock-outline"></i> Created on {{account.createdAt| date : "MMM dd y"}}
+			</div>
+		</ion-item>
+	</ion-list>
+	<br><br>
+  </ion-content>
+</ion-view>

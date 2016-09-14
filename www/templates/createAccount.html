@@ -1,0 +1,43 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Create New Account</h1>
+    <div class="buttons">
+      <button class="button button-light" ng-disabled="createdisableButton" ng-click="closeCreateAccountForm()">Close</button>
+    </div>
+  </ion-header-bar>
+	<ion-content>
+		<form name="createAccountForm" ng-submit="createAccount()">
+		<div class="list">
+			<label class="item item-input">
+				<span class="input-label">Account Name</span>
+				<input type="text" ng-required="true" ng-model="account.name"/>
+			</label>
+			<label class="item item-input">
+				<span class="input-label">Description</span>
+				<input type="text" ng-required="true" ng-model="account.description"/>
+			</label>
+			<label class="item item-input item-select">
+				<span class="input-label">Type</span>
+				<select ng-required="true" ng-model="account.type">
+				  <option value="type_bank">Bank Account</option>
+				  <option value="type_wallet">Online Wallet</option>
+				</select>
+			</label>
+			<label class="item item-input">
+				<span class="input-label">Account Number</span>
+				<input type="text" ng-required="true" ng-model="account.number"/>
+			</label>
+			<label class="item item-input">
+				<span class="input-label">Amount</span>
+				<input type="number" ng-required="true" min="0" ng-model="account.balance"/>
+			</div>
+			<label class="item">
+				<button ng-disabled="createAccountForm.$invalid||createdisableButton" type="submit" class="{{createAccountForm.$invalid ? 'button button-block button-disabled button-positive' : 'button button-block button-positive'}}">Create</button>
+			</label>
+			<div ng-if="loading">
+				<center><img src="img/spinner.gif"></center>
+			</div>
+		</div>
+		</form>
+	</ion-content>
+</ion-modal-view>

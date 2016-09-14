@@ -1,0 +1,48 @@
+.<!--
+Create tabs with an icon and label, using the tabs-positive style.
+Each tab's child <ion-nav-view> directive will have its own
+navigation history that also transitions its views in and out.
+-->
+<ion-tabs class="tabs-icon-top tabs-color-active-positive">
+
+  <!-- Dashboard Tab -->
+  <ion-tab title="Dashboard" icon-off="ion-ios-speedometer" icon-on="ion-ios-speedometer" href="#/app/dashboard">
+    <ion-nav-view name="dashboard"></ion-nav-view>
+  </ion-tab>
+
+  <!-- Accounts Tab -->
+  <ion-tab title="Accounts" icon-off="ion-card" icon-on="ion-card" href="#/app/accounts">
+    <ion-nav-view name="accounts"></ion-nav-view>
+  </ion-tab>
+
+  <!-- Transactions Tab -->
+  <ion-tab title="Transactions" icon-off="ion-shuffle" icon-on="ion-shuffle" href="#/app/transaction">
+    <ion-nav-view name="transaction"></ion-nav-view>
+  </ion-tab>
+  
+  <!-- Reports Tab -->
+  <ion-tab title="Reports" icon-off="ion-stats-bars" icon-on="ion-stats-bars" href="#/app/reports">
+    <ion-nav-view name="reports"></ion-nav-view>
+  </ion-tab>
+  
+  <!-- Profile Tab -->
+  <ion-tab title="Profile" icon-off="ion-person" icon-on="ion-person" href="#/app/userprofile">
+    <ion-nav-view name="userprofile"></ion-nav-view>
+  </ion-tab>
+  
+  <!-- Settings Tab -->
+  <ion-tab title="Settings" icon-off="ion-ios-gear" icon-on="ion-ios-gear" href="#/app/settings">
+    <ion-nav-view name="settings"></ion-nav-view>
+  </ion-tab>
+  
+  <!-- Contact Us Tab -->
+  <ion-tab title="ContactUs" icon-off="ion-android-mail" icon-on="ion-android-mail" href="#/app/contactus">
+    <ion-nav-view name="contactus"></ion-nav-view>
+  </ion-tab>
+  
+  <!-- Logout Tab -->
+  <ion-tab title="Exit" icon-off="ion-android-exit" icon-on="ion-android-exit" href="#/app/logout">
+    <ion-nav-view name="logout"></ion-nav-view>
+  </ion-tab>
+
+</ion-tabs>
